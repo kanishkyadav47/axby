@@ -29,10 +29,12 @@ public class MoveService {
 
         Color[] st = board.getState();
         int[] in = retrieveNextInsertingIndex(inStack - 1);
+        int insertingIndex = -1;
         for (int j : in) {
             if (st[j] == Color.Empty) {
                 st[j] = player.getColor();
                 inserted = true;
+                insertingIndex = j;
                 break;
             }
         }
@@ -42,7 +44,7 @@ public class MoveService {
             /**
              * player won
              */
-            if (checkService.checkForWin(player)) {
+            if (checkService.checkForWin(player, insertingIndex)) {
                 finisherService.playerWon(player);
             }
 

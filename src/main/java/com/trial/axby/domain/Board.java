@@ -57,7 +57,7 @@ public class Board {
         return depth;
     }
 
-    public int getnStacks() {
+    public int getNStacks() {
         return nStacks;
     }
 
@@ -101,6 +101,6 @@ public class Board {
     public void reset(){
         for(int i = 0; i<boardSize; i++)
             state[i] = Color.Empty;
-        setMoveMessage("Rematch");
+        setMoveMessage(null);
     }
 }

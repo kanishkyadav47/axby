@@ -67,7 +67,7 @@ public class MoveService {
     private int[] retrieveNextInsertingIndex ( int inStack){
         int[] in = new int[board.getDepth()];
         for (int i = board.getDepth() - 1; i >= 0; i--) {
-            in[i] = inStack + (i * board.getnStacks());
+            in[i] = inStack + (i * board.getNStacks());
         }
         return in;
     }
@@ -86,7 +86,7 @@ public class MoveService {
 
         int stack = Integer.parseInt(inp);
 
-        if(stack<1 || stack > b.getnStacks()){
+        if(stack<1 || stack > b.getNStacks()){
             System.out.println("Please enter a valid stack number within the range");
         }
         return stack;

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MoveController {
 
-    //private Logger logger = LoggerFactory.getLogger(MoveController.class);
-
     private final MoveService moveService;
     private final CheckService checkService;
     private final TurnValidator turnValidator;
@@ -30,13 +28,11 @@ public class MoveController {
 
     @GetMapping("/board")
     public Board currentState() {
-        //logger.info("Board status requested");
         return checkService.getBoard();
     }
 
     @GetMapping("/bothplayers")
     public boolean bothPlayersJoined() {
-        //logger.info("Board status requested");
         return (checkService.bothPlayersJoined() && !finisherService.isPlayerLeft());
     }
 
@@ -56,22 +52,14 @@ public class MoveController {
         if(turnValidator.isValidTurn(playerId)){
             if(moveService.insert(turnValidator.whoseTurn().get(), nStack)) {
                 turnValidator.nextTurn();
-                //logger.info("Move by Player {}", playerId);
             }
         }
         return board;
     }
 
     @GetMapping("/myturn/{playerId}")
-    public String whoseTurn(@PathVariable int playerId){
-        if(playerId == turnValidator.whoseTurn().get().getId())
-         return (finisherService.isPlayerLeft()) ? "playerLeft" : "continue";
-        return "not";
-    }
-
-    @GetMapping("/serverrunning")
-    public boolean serverRunning() {
-        return true;
+    public boolean whoseTurn(@PathVariable int playerId){
+        return (playerId == turnValidator.whoseTurn().get().getId());
     }
 
 }

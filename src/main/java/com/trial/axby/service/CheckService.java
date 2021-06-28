@@ -56,7 +56,7 @@ public class CheckService {
     public List<int[]> possiblePosition(int index){
 
         List<int[]> list = new ArrayList();
-        int nStacks = this.board.getnStacks();
+        int nStacks = this.board.getNStacks();
         int inARow = this.board.getInARow();
 
         int leftEnd = (index/nStacks)*nStacks;
@@ -89,7 +89,7 @@ public class CheckService {
         int inARow = this.board.getInARow();
         int[] pos = new int[inARow];
         for (int j = 0; j < inARow; j++)
-            pos[j] = i + (j* this.board.getnStacks());
+            pos[j] = i + (j* this.board.getNStacks());
 
         return pos;
     }
@@ -105,6 +105,8 @@ public class CheckService {
 
 
     public boolean bothPlayersJoined() {
-        return playerRepository.count()==2;
+        boolean flag;
+        flag =  playerRepository.count()==2;
+        return flag;
     }
 }

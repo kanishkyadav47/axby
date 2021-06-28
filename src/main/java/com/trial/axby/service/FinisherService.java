@@ -31,18 +31,15 @@ public class FinisherService {
         board.setMoveMessage(Board.BOARD_FULL);
     }
 
-    public void reset() {
-        if(!playerLeft) {
-            board.reset();
-            turnValidator.resetTurnCounter();
-        }
-
-
-    }
 
     public void endGame() {
         playerLeft = true;
-        reset();
+    }
+
+    public void reset() {
+            board.reset();
+            turnValidator.resetTurnCounter();
+
     }
     public boolean isPlayerLeft() {
         return playerLeft;

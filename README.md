@@ -11,6 +11,6 @@ Server application for the game 5-in-a-row.
 ###  To Run Locally
 
 1. cd to the project directory.
-2.  `mvn package spring-boot:repackage` creates runnable jar.
+2.  `mvn package` creates runnable jar.
 3. `java -jar target/axby-0.0.1-SNAPSHOT.jar` launches the application listening on port 8080.
 

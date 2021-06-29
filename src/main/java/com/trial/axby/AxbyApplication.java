@@ -8,6 +8,7 @@ public class AxbyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AxbyApplication.class, args);
+		System.out.println("Server started. Players can connect now.");
 	}
 
 }

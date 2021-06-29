@@ -6,8 +6,6 @@ import com.trial.axby.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Scanner;
-
 @Service
 public class MoveService {
 
@@ -73,26 +71,5 @@ public class MoveService {
         }
         return in;
     }
-
-    private int getInputFromPlayer(Player player){
-        System.out.println("\n********************************");
-        board.display();
-        System.out.println("Your turn "+player.getName());
-        Board b = Board.getInstance();
-
-        String inp;
-        Scanner in = new Scanner(System.in);
-
-
-        inp = in.nextLine();
-
-        int stack = Integer.parseInt(inp);
-
-        if(stack<1 || stack > b.getNStacks()){
-            System.out.println("Please enter a valid stack number within the range");
-        }
-        return stack;
-    }
-
 
 }

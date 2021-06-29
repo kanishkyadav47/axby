@@ -30,11 +30,9 @@ public class CheckService {
     }
 
 
-    // TODO: 1. optimise checking for just the neighbourhood
-// TODO: 2. Diagonal condition
     public boolean checkForWin(Player p, int insertPosition){
         Color col = p.getColor();
-        Color[] state = board.getState();
+        Color[] state = getBoard().getState();
         List<int[]> list = possiblePosition(insertPosition);
         for (int[] a : list) {
             int consecutiveColor = 0;
@@ -86,7 +84,7 @@ public class CheckService {
             leftDiagonal = leftDiagonal - (nStacks + 1);
         }
         for(int i = leftDiagonal; i <= index; i += (nStacks + 1) ){
-            if(i + ((inARow - 1)*10) < board.getState().length || !hasExceededRightBoundary(i)){
+            if(i + ((inARow - 1)*(nStacks + 1)) < board.getState().length && !hasExceededRightBoundary(i)){
                 int[] a = new int[5];
                 for (int j = 0; j < 5; j++)
                     a[j] = leftDiagonal + j*(nStacks + 1);
@@ -106,7 +104,7 @@ public class CheckService {
             rightDiagonal = rightDiagonal - (nStacks - 1);
         }
         for(int i = rightDiagonal; i <= index; i += (nStacks - 1) ){
-            if(i + ((inARow - 1)*10) < board.getState().length || !hasExceededLeftBoundary(i)){
+            if(i + ((inARow - 1)*(nStacks - 1)) < board.getState().length && !hasExceededLeftBoundary(i)){
                 int[] a = new int[5];
                 for (int j = 0; j < 5; j++)
                     a[j] = rightDiagonal + j*(nStacks - 1);
